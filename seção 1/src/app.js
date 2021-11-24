@@ -1,12 +1,14 @@
 'use strict';
 import React, { Component } from 'react';
-import Title from './title';
+import Square from './Square';
 
 class App extends Component {
   render() {
     return (
       <div className='container'>
-        <Title name='Mateus' />
+        {['blue', 'green', 'yellow'].map((square) => (
+          <Square color={square} key={square} />
+        ))}
       </div>
     );
   }
