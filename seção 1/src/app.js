@@ -6,8 +6,8 @@ class App extends Component {
   render() {
     return (
       <div className='container'>
-        {['blue', 'green', 'yellow'].map((square) => (
-          <Square color={square} key={square} />
+        {['blue', 'black', 'black'].map((square, index) => (
+          <Square color={square} key={index} />
         ))}
       </div>
     );
