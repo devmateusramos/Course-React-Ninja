@@ -1,30 +1,18 @@
 'use strict';
 import React, { Component } from 'react';
-import Square from './Square';
+import Button from './button';
+import LikeButton from './like-button';
+import SearchButton from './searchButton';
 
 class App extends Component {
   render() {
     return (
-      <div
-        className='container'
-        onClick={(e) => {
-          alert('clicou');
-        }}
-      >
-        <Square />
+      <div className='container'>
+        <LikeButton />
+        <SearchButton />
       </div>
     );
   }
 }
-
-// var App = React.createClass({
-//   render: function () {
-//     return (
-//       <div className='container'>
-//         <Title name='Mateus' />
-//       </div>
-//     );
-//   },
-// });
 
 export default App;
