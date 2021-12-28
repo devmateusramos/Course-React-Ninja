@@ -34,6 +34,10 @@ class Timer extends Component {
     clearInterval(this.timer)
   }
 
+  componentDidUpdate (prevProps, prevState, snapshot) {
+    console.log('componentDidUpdate timer', this.props, prevProps)
+  }
+
   render () {
     console.log('render timer')
     return <div>Timer: {this.state.time}</div>
