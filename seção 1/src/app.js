@@ -1,41 +1,38 @@
-'use strict';
-import React, { Component } from 'react';
-import Square from './Square';
-import Button from './button';
-import Timer from './timer';
+'use strict'
+import React, { Component } from 'react'
+
+import Timer from './timer'
 
 class App extends Component {
-  constructor() {
-    console.log('constructor');
-    super();
+  constructor () {
+    console.log('constructor')
+    super()
     this.state = {
-      showTimer: true,
-    };
+      time: 0, showTimer: true,
+    }
   }
 
-  componentWillMount() {
-    console.log('componentWillMount');
+  componentWillMount () {
+    console.log('componentWillMount')
   }
 
-  componentDidMount() {
-    console.log('componentDidMount');
+  componentDidMount () {
+    console.log('componentDidMount')
   }
 
-  render() {
-    console.log('render');
-    return (
-      <div>
-        {this.state.showTimer && <Timer />}
-        <button
-          onClick={() => {
-            this.setState({ showTimer: !this.state.showTimer });
-          }}
-        >
-          Show/Hide timer
-        </button>
-      </div>
-    );
+  render () {
+    console.log('render')
+    return (<div>
+      {<Timer time={this.state.time}/>}
+      <button
+        onClick={() => {
+          this.setState({ time: this.state.time + 10 })
+        }}
+      >
+        Change props
+      </button>
+    </div>)
   }
 }
 
-export default App;
+export default App

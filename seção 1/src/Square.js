@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Square = ({ color }) => (
   <div
@@ -8,10 +8,10 @@ const Square = ({ color }) => (
       width: '100px',
     }}
   />
-);
+)
 
 Square.defaultProps = {
   color: 'red',
-};
+}
 
-export default Square;
+export default Square
