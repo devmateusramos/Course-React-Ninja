@@ -6,6 +6,7 @@ class App extends Component {
     super()
     this.state = {
       value: 'Valor inicial',
+      checked: false,
     }
   }
 
@@ -18,6 +19,18 @@ class App extends Component {
             value: e.target.value,
           })
         }}/>
+        <label>
+          <input type="checkbox" value="my-checkbox" checked={this.state.checked}
+                 onChange={(e) => {
+                   this.setState({ checked: !this.state.checked })
+                 }}
+          /> Checkbox
+        </label>
+
+        <input type="radio" name="rd" value="1" defaultChecked/> Radio 1 {{/*component
+        uncontrolled por conta de faltar o onChange, poderia fazer o mesmo
+        com o checkbox e text*/}}
+        <input type="radio" name="rd" value="2"/> Radio 2
       </form>
     </div>)
   }
