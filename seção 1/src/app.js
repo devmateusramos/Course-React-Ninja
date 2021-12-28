@@ -27,9 +27,9 @@ class App extends Component {
           /> Checkbox
         </label>
 
-        <input type="radio" name="rd" value="1" defaultChecked/> Radio 1 {{/*component
+        <input type="radio" name="rd" value="1" defaultChecked/> Radio 1 {/*component
         uncontrolled por conta de faltar o onChange, poderia fazer o mesmo
-        com o checkbox e text*/}}
+        com o checkbox e text*/}
         <input type="radio" name="rd" value="2"/> Radio 2
       </form>
     </div>)
