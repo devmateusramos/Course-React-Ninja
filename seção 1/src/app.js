@@ -12,8 +12,20 @@ class App extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            console.log("event", e);
+          }}
+          onChange={(e) => {
+            console.log("name", e.target.name);
+            console.log("value", e.target.value);
+          }}
+        >
           <textarea defaultValue={"text\narea"} />
+          <input type='name' name='name' />
+          <input type='email' name='email' />
+          <button type='submit'>Enviar</button>
         </form>
       </div>
     );
