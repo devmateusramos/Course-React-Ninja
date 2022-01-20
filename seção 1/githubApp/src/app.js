@@ -1,59 +1,50 @@
 'use strict';
 import React, { Component } from 'react';
+import AppContent from './components/app-content';
+import ajax from '@fdaciuk/ajax';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      checked: false,
-      showContent: false,
+      userinfo: null,
+      repos: [],
+      starred: [],
     };
+  }
+
+  handleSearch(e) {
+    const value = e.target.value;
+    const keyCode = e.wich || e.keyCode;
+    const ENTER = 13;
+    if (keyCode === ENTER) {
+      ajax()
+        .get(`https://api.github.com/users/${value}`)
+        .then((result) => {
+          this.setState({
+            userinfo: {
+              username: result.name,
+              photo: result.avatar_url,
+              login: result.login,
+              repos: result.public_repos,
+              followers: result.followers,
+              following: result.following,
+            },
+          });
+
+          console.log(result);
+        });
+    }
   }
 
   render() {
     return (
-      <div className='app'>
-        <div className='search'>
-          <input
-            type='search'
-            placeholder='Digite o nome do usuário no github'
-          />
-        </div>
-        <div className='user-info'>
-          <img src='https://avatars.githubusercontent.com/u/87035885?v=4' />
-          <h1>
-            <a href='https://github.com/devmateusramos'>Mateus Ramos</a>
-          </h1>
-          <ul className='repos-info'>
-            <li>- Repositórios: 52</li>
-            <li>- Seguidores: 1</li>
-            <li>- Seguindo: 3</li>
-          </ul>
-
-          <div className='actions'>
-            <button>Ver repositórios</button>
-            <button>Ver favoritos</button>
-          </div>
-
-          <div className='repos'>
-            <h2>Repositórios:</h2>
-            <ul>
-              <li>
-                <a href='#'>Nome do repositório</a>
-              </li>
-            </ul>
-          </div>
-
-          <div className='starred'>
-            <h2>Favoritos:</h2>
-            <ul>
-              <li>
-                <a href='#'>Nome do repositório</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <AppContent
+        userinfo={this.state.userinfo}
+        repos={this.state.repos}
+        starred={this.state.starred}
+        handleSearch={(e) => this.handleSearch(e)}
+      />
     );
   }
 }
